@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sorts your screenshots folder for you. An open-source vision model reads each screenshot in your browser, renames it, files it, and flags the ones holding OTPs or card numbers. Nothing is uploaded." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦥</text></svg>" />
+    <title>Screenshot Sloth</title>
+  </head>
+  <body>
+    <main>
+      <header class="hero" id="hero">
+        <p class="eyebrow">🦥 Screenshot Sloth</p>
+        <h1>Your screenshots folder, sorted while you lie down.</h1>
+        <p class="lede">
+          An open-source vision model reads every screenshot <strong>in this browser tab</strong>, names it for what's on it,
+          files it into folders, and flags the ones holding OTPs, card numbers or Aadhaar. Nothing is uploaded.
+        </p>
+        <div class="actions">
+          <button class="primary" id="pick-folder" hidden>Choose your screenshots folder</button>
+          <label class="primary button" id="pick-files" hidden>
+            Choose screenshots
+            <input type="file" accept="image/*" multiple hidden />
+          </label>
+          <button class="secondary" id="demo">Try the demo desktop</button>
+        </div>
+        <p class="fine" id="browser-note"></p>
+      </header>
+
+      <section id="work" hidden>
+        <div class="toolbar">
+          <div>
+            <h2 id="source-label">Screenshots</h2>
+            <p class="status" id="status" aria-live="polite">Starting…</p>
+          </div>
+          <div class="toolbar-actions">
+            <button class="secondary" id="restart">Start over</button>
+            <button class="primary" id="apply" disabled>Apply</button>
+          </div>
+        </div>
+        <div class="meter" id="meter" aria-hidden="true"><div id="meter-fill"></div></div>
+        <div class="payoff" id="payoff" hidden></div>
+        <div id="plan"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Runs <a href="https://huggingface.co/microsoft/Florence-2-base-ft">Florence-2</a> (MIT) through
+        <a href="https://github.com/huggingface/transformers.js">Transformers.js</a> on WebGPU, falling back to WASM.
+        The model (about 350 MB) downloads once from Hugging Face and is cached. Your screenshots never leave the tab.
+        <a href="https://github.com/tarunvashishth/screenshot-sloth">Source</a>
+      </p>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
