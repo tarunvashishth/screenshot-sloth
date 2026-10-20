@@ -2,6 +2,8 @@
 
 Your screenshots folder, sorted while you lie down.
 
+![Screenshot Sloth sorting the demo desktop](docs/demo.gif)
+
 **Try it:** https://tarunvashishth.github.io/screenshot-sloth/ (Chrome or Edge to sort in place; any browser for the demo)
 
 Point it at a folder full of `Screenshot 2026-10-03 at 14.22.01.png` files. An open-source vision model

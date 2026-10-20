@@ -26,10 +26,10 @@ let modelReady = false;
 worker.onmessage = (e: MessageEvent) => {
   const m = e.data;
   if (m.type === 'progress') {
-    // Cache hits report progress too, with tiny totals; that isn't a download.
-    if (m.total < 20e6) { setStatus('Loading the model from cache…'); return; }
+    // Loading from the browser cache reports progress too, so don't claim it's downloading.
+    if (m.total < 20e6) { setStatus('Loading the model…'); return; }
     const pct = Math.round((m.loaded / m.total) * 100);
-    setStatus(`Downloading the model, once: ${pct}% of ${Math.round(m.total / 1e6)} MB`);
+    setStatus(`Loading the model (${Math.round(m.total / 1e6)} MB, downloaded once then cached): ${pct}%`);
     setMeter(m.loaded / m.total);
   } else if (m.type === 'ready') {
     device = m.device; modelReady = true;
